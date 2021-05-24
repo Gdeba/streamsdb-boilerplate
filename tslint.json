@@ -1,0 +1,30 @@
+{
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "rules": {
+    "typedef": [
+      true,
+      "call-signature",
+      "property-declaration"
+    ],
+    "no-implicit-dependencies": true,
+    "max-line-length": [true, 140],
+    "await-promise": false,
+    "no-multi-spaces": true,
+    "variable-name": false,
+    "function-name": [
+      true,
+      {
+        "function-regex": "^[a-zA-Z0-9_$][\\w\\d]+$",
+        "method-regex": "^[a-zA-Z0-9_$][\\w\\d]+$",
+        "private-method-regex": "^[a-zA-Z0-9_$][\\w\\d]+$",
+        "protected-method-regex": "^[a-zA-Z0-9_$][\\w\\d]+$",
+        "static-method-regex": "^[a-zA-Z0-9_$][\\w\\d]+$"
+      }
+    ]
+  },
+  "linterOptions": {
+    "exclude": "**/*.json"
+  }
+}

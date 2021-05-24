@@ -1,0 +1,75 @@
+{
+  "name": "streamsdb-boilerplate",
+  "version": "0.0.0",
+  "description": "Minimalistic boilerplate to quick-start Node.js development (with streams and MongoDB connection) in TypeScript.",
+  "author": "Guillermo Dearmas",
+  "license": "",
+  "main": "build/src/main.js",
+  "ts:main": "src/main.ts",
+  "types": "src/main.ts",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "devDependencies": {
+    "@types/jest": "~22.2.3",
+    "@types/lodash": "^4.14.170",
+    "@types/mongodb": "^3.6.16",
+    "@types/node": "~10.14.22",
+    "babel-jest": "^23.0.0",
+    "jest": "~23.5.0",
+    "rimraf": "~2.6.2",
+    "ts-jest": "~23.1.4",
+    "ts-node": "^7.0.1",
+    "tslint": "~5.10.0",
+    "tslint-config-airbnb": "^5.9.2",
+    "tsutils": "^2.29.0",
+    "typescript": "~3.6.4"
+  },
+  "scripts": {
+    "clean": "rimraf coverage build tmp",
+    "prepublish": "npm run build",
+    "build": "tsc -p tsconfig.release.json",
+    "build-test": "tsc -p tsconfig.json --noEmit",
+    "watch": "tsc -w -p tsconfig.release.json",
+    "lint": "tslint -t stylish --project \"tsconfig.json\"",
+    "pretest": "npm run lint",
+    "test": "npm run test-only",
+    "test-only": "jest --coverage",
+    "test:watch": "jest --watch",
+    "git-hooks": "./git-hooks/install"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(ts|js)x?$",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx,js,jsx}",
+      "!src/**/*.d.ts"
+    ]
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "lodash": "^4.17.21",
+    "mongodb": "^3.6.8"
+  }
+}

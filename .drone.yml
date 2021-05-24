@@ -1,0 +1,19 @@
+---
+kind: pipeline
+name: default
+type: kubernetes
+clone:
+  disable: true
+steps:
+  - name: git
+    pull: default
+    image: plugins/git
+    settings:
+      depth: 1
+  - name: lint
+    pull: default
+    image: node:10.16
+    commands:
+      - npm install
+      - npm run build-test
+      - npm run test
